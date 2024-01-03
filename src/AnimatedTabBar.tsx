@@ -63,6 +63,12 @@ interface AnimatedTabBarProps
    * @default false
    */
   titleShown?: boolean;
+
+  /**
+   * Overwrite Intial Rute Index
+   * @default 0
+   */
+  defaultRouteIndex?: number;
 }
 const AnimatedTabBarComponent = (props: AnimatedTabBarProps) => {
   // props
@@ -78,6 +84,7 @@ const AnimatedTabBarComponent = (props: AnimatedTabBarProps) => {
     dotColor = TAB_BAR_COLOR,
     titleShown = false,
     barWidth,
+    defaultRouteIndex = 0,
   } = props;
 
   // variables
@@ -91,7 +98,7 @@ const AnimatedTabBarComponent = (props: AnimatedTabBarProps) => {
   }, [state]);
 
   // reanimated
-  const selectedIndex = useSharedValue(0);
+  const selectedIndex = useSharedValue(defaultRouteIndex);
 
   // callbacks
   const getRouteTitle = useCallback(
